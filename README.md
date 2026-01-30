@@ -62,90 +62,108 @@ binance_bot/
 git clone https://github.com/abhi100om/binance_bot.git
 cd binance_bot
 ```
-3. Create Virtual Environment
+### 3. Create & Activate Virtual Environment
+```
 python -m venv venv
 venv\Scripts\activate   # Windows
-
-
+```
 ### 4. Install Dependencies
+```
 pip install -r requirements.txt
+```
 
-5. API Key Configuration
+### 5. API Key Configuration
+```
+
 Create a .env file in the project root:
 
-BINANCE_API_KEY=your_futures_testnet_api_key
-BINANCE_API_SECRET=your_futures_testnet_secret_key
-Important:
+BINANCE_API_KEY=your_testnet_api_key
+BINANCE_API_SECRET=your_testnet_secret_key
 
-Keys must be from Futures Testnet
+```
+### ⚠️ Important
 
-Use System Generated (HMAC) keys
+Use Futures Testnet keys only
+Use HMAC (System Generated) keys
 
-Do not commit .env to GitHub
+Never commit .env to GitHub
 
 ▶️ Usage
-Market Order
+📌 Market Order
+```
 python -m src.market_orders BTCUSDT BUY 0.002
-Arguments:
+```
 
-SYMBOL – e.g., BTCUSDT
+### Arguments
 
-BUY / SELL
+SYMBOL → BTCUSDT
+SIDE → BUY / SELL
+QUANTITY → Order size
 
-QUANTITY
-
-Limit Order
+📌 Limit Order
+```
 python -m src.limit_orders BTCUSDT SELL 0.002 70000
-Arguments:
-
+```
+Arguments
 SYMBOL
-
-BUY / SELL
-
+SIDE
 QUANTITY
-
 PRICE
 
-🧾 Logging
-All actions are logged to:
+### 🧾 Logging
 
+All bot activity is logged in:
+```
 bot.log
-Logs contain:
+```
 
-Timestamps
+Logs include:
 
-API requests
+⏱️ Timestamps
 
-API responses
+📡 API requests
 
-Errors (if any)
+📬 API responses
 
-⚠️ Validation & Error Handling
-The bot validates:
+❌ Errors (if any)
 
-Symbol format
+## ⚠️ Validation & Error Handling
 
-Side (BUY / SELL)
+### The bot validates:
 
-Quantity > 0
+✅ Symbol format
 
-Price > 0 (limit orders)
+✅ BUY / SELL side
 
-Invalid input won’t call Binance API.
+✅ Quantity > 0
 
-📝 Notes & Assumptions
-Operates on Binance Futures Testnet
+✅ Price > 0 (limit orders)
+
+🚫 Invalid input = No API call
+
+### 📝 Notes & Assumptions
+
+Operates only on Binance Futures Testnet
 
 Minimum order notional: ≥ 100 USDT
 
-Market orders may show status NEW initially due to testnet behavior
+Market orders may temporarily show NEW status (Testnet behavior)
 
-🔧 Future Enhancements
-Stop-Limit / OCO / TWAP strategies
+## 💡 Future Enhancements
 
-Unified CLI using Typer / argparse
+Stop-Loss & Take-Profit orders
 
-Backtesting integration
+OCO / TWAP strategies
 
-👤 Author
-Abhishek Singh
+Unified CLI using Typer or argparse
+
+Strategy backtesting engine
+
+Docker support 🐳
+
+Web dashboard (FastAPI + React)
+
+
+## 📝 License
+
+Licensed under the MIT License
