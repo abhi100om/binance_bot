@@ -1,85 +1,94 @@
 # Binance Futures Trading Bot (USDT-M Testnet)
 
-## Overview
-This project is a **CLI-based Python trading bot** built for **Binance USDT-M Futures Testnet**.  
-It supports **Market and Limit orders**, includes **input validation**, **structured logging**, and follows a **clean, modular code structure** suitable for extension to advanced order types.
+## 🚀 Overview
+This is a **CLI-based Python trading bot** built for **Binance USDT-M Futures Testnet**.  
+It supports **Market and Limit orders**, with proper **input validation**, **structured logging**, and **secure API handling**.
 
-The bot is designed for **testing and learning purposes** using Binance Futures **Testnet**, not real money.
+This bot is designed for **testing & evaluation** using Binance Futures **Testnet** (no real money involved).
 
 ---
 
-## Features
+## 🧠 Features
 - Place **Market Orders**
 - Place **Limit Orders**
-- Supports **BUY** and **SELL**
-- Command-line interface (CLI)
+- Support for **BUY / SELL**
+- **Command-line interface**
 - Input validation (symbol, side, quantity, price)
-- Structured logging to `bot.log`
-- Secure API authentication using environment variables
-- Modular, reusable code structure
+- **Structured logging** to file
+- Secure authentication via **environment variables**
+- Clean, modular, extensible code structure
 
 ---
 
-## Tech Stack
-- Python 3.x
-- Binance Futures API (Testnet)
-- `python-binance`
-- `python-dotenv`
+## 🛠️ Tech Stack
+- **Python 3.x**
+- Binance USDT-M Futures API (Testnet)
+- Libraries:
+  - `python-binance`
+  - `python-dotenv`
+- Tools: Git & GitHub
 
 ---
 
-## Project Structure
+## 📁 Project Structure
+```
 binance_bot/
-│
 ├── src/
 │ ├── init.py
 │ ├── client.py # Binance Futures client wrapper
-│ ├── validators.py # Input validation logic
+│ ├── validators.py # Input validation
 │ ├── market_orders.py # Market order CLI
 │ ├── limit_orders.py # Limit order CLI
-│ └── advanced/ # (Optional) Advanced order strategies
-│
-├── bot.log # API request/response logs
+│ └── advanced/ # (Optional) advanced order strategies
+├── bot.log # Logs: requests, responses, errors
 ├── README.md
 ├── requirements.txt
-└── .env # API keys (not committed)
+└── .env # API keys (excluded from Git)
 
-
+```
 ---
 
-## Setup Instructions
+## 📦 Setup Instructions
 
 ### 1. Prerequisites
-- Python 3.9+
-- Binance Futures **Testnet** account  
+- Python 3.9 or higher
+- Binance Futures **Testnet account**
   👉 https://testnet.binancefuture.com
 
 ---
 
-### 2. Create Virtual Environment
+### 2. Clone the Repository
 ```bash
+git clone https://github.com/abhi100om/binance_bot.git
+cd binance_bot
+```
+3. Create Virtual Environment
 python -m venv venv
 venv\Scripts\activate   # Windows
-3. Install Dependencies
+
+
+### 4. Install Dependencies
 pip install -r requirements.txt
-4. API Key Configuration
+
+5. API Key Configuration
 Create a .env file in the project root:
 
 BINANCE_API_KEY=your_futures_testnet_api_key
 BINANCE_API_SECRET=your_futures_testnet_secret_key
-⚠️ Notes:
-API keys must be generated from Binance Futures Testnet
-Use System-generated (HMAC) keys
-Do NOT hardcode keys in code
+Important:
 
-Usage
-All commands must be run from the project root.
+Keys must be from Futures Testnet
 
+Use System Generated (HMAC) keys
+
+Do not commit .env to GitHub
+
+▶️ Usage
 Market Order
 python -m src.market_orders BTCUSDT BUY 0.002
 Arguments:
 
-SYMBOL – Trading pair (e.g. BTCUSDT)
+SYMBOL – e.g., BTCUSDT
 
 BUY / SELL
 
@@ -97,50 +106,46 @@ QUANTITY
 
 PRICE
 
-Logging
-All API requests, responses, and errors are logged to:
+🧾 Logging
+All actions are logged to:
 
 bot.log
-The log file includes:
+Logs contain:
 
 Timestamps
 
-Order parameters
+API requests
 
-Binance API responses
+API responses
 
-Error traces (if any)
+Errors (if any)
 
-Validation & Error Handling
+⚠️ Validation & Error Handling
 The bot validates:
 
-Trading symbol
+Symbol format
 
-Order side (BUY / SELL)
+Side (BUY / SELL)
 
 Quantity > 0
 
-Price > 0 (for limit orders)
+Price > 0 (limit orders)
 
-Invalid inputs are rejected before API calls.
+Invalid input won’t call Binance API.
 
-Notes & Assumptions
-This bot uses Binance Futures Testnet (fake money).
+📝 Notes & Assumptions
+Operates on Binance Futures Testnet
 
-Minimum order notional on testnet is 100 USDT.
+Minimum order notional: ≥ 100 USDT
 
-Market orders may show status NEW briefly due to testnet latency.
+Market orders may show status NEW initially due to testnet behavior
 
-Advanced orders (Stop-Limit, OCO, TWAP, Grid) can be added easily due to modular design.
+🔧 Future Enhancements
+Stop-Limit / OCO / TWAP strategies
 
-Future Improvements
-Add advanced order types (Stop-Limit / OCO / TWAP)
+Unified CLI using Typer / argparse
 
-Unified CLI using argparse or Typer
+Backtesting integration
 
-Strategy-based order execution
-
-Backtesting support
-
-Author
+👤 Author
 Abhishek Singh
