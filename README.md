@@ -26,7 +26,7 @@ This bot is designed for **testing & evaluation** using Binance Futures **Testne
 - Libraries:
   - `python-binance`
   - `python-dotenv`
-- Tools: Git & GitHu
+- Tools: Git & GitHub
 
 ---
 
